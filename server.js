@@ -35,7 +35,22 @@ app.get('/', (req, res) => {
 } );
 
 //Import routes from API
-var tiposRouter = require('./routes/tipo-equipo-router');
+const tiposRouter = require('./routes/tipo-equipo-router');
+const estadosRouter = require('./routes/estado-equipo-router');
+const marcaRouter = require('./routes/marca-router');
+const usuariosRouter = require('./routes/usuarios-router');
 
-//Use routes with express
+
+//Middleware
+app.use(express.json());
+//Use routes with express fo TiposEquipos
 app.use('/api', tiposRouter);
+
+// Use routes of Estados Equipos
+app.use('/api', estadosRouter)
+
+//Use routes of Marca
+app.use('/api', marcaRouter);
+
+// Use route of Usaurios
+app.use('/api', usuariosRouter);

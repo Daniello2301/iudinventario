@@ -21,7 +21,7 @@ const MarcaEschema = mongoose.Schema({
     }
 });
 
-const Marca = module.exports = model('Marca', MarcaEschema);
+const Marca = module.exports = mongoose.model('Marca', MarcaEschema);
 
 module.exports.get = (callback, limit) => {
     Marca.find(callback).limit(limit);

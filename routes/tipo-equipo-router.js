@@ -1,12 +1,12 @@
 const tiposRouter = require('express').Router();
 
 //Set 
-tiposRouter.get('/', (req, res) => {
+/* tiposRouter.get('/', (req, res) => {
     res.json({
         status: "API its working ",
         message: "Welcom to route from Tipos Equipos"
     });
-});
+}); */
 
 // Import all methos from controllers
 const tipoController = require('../controllers/tipo-equipos-controller')

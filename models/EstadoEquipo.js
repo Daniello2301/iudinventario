@@ -21,6 +21,8 @@ const EstadoEquipoEschema = mongoose.Schema({
     }
 });
 
-const EstadoEquipo = model('TipoEquipo', EstadoEquipoEschema);
+const EstadoEquipo = module.exports = mongoose.model('EstadoEquipo', EstadoEquipoEschema);
 
-module.exports = EstadoEquipo;
+module.exports.get = (callback, limit) => {
+    EstadoEquipo.find(callback).limit(limit);
+};
