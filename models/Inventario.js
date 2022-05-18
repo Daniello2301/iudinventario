@@ -62,4 +62,5 @@ const InventaraioEschema = mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Inventario', InventaraioEschema);
+const Inventario = new mongoose.model('Inventario', InventaraioEschema);
+module.exports = Inventario
