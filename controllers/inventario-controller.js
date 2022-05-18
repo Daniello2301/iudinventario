@@ -95,17 +95,25 @@ exports.deleteById = ( req, res ) => {
 
 exports.filterUserActive = async ( err, res ) => {
 
+    console.log("GET/intentarios con usuarios activos")
     const response = await Inventario.aggregate([
+
         {
-            $lookup:  {
-                from: "Usuario",
+            $lookup: {
+                from: "usuarios",
                 localField: "usuario",
                 foreignField: "_id",
                 as: "usuarioActivo"
-             },
-        }
+            }
+        },
+        {
+            $unwind: "$usuarioActivo"
+        },
+        {
+            $match: {"usuarioActivo.estado" : "Activo"}
+        },
     ]);
-    if(err) return res.status(500).send(err.message);
+    //if(err) return res.status(500, err.message);
 
     console.log(response);
     res.status(201).jsonp(response);

@@ -17,5 +17,5 @@ inventarioRouter.route('/inventariosUsuarioActivo')
         .get(inventarioController.filterUserActive);
 
 module.exports = inventarioRouter;
-
+ 
 
