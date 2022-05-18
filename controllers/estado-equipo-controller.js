@@ -33,9 +33,7 @@ exports.create = async(req, res) => {
 
     const estadoEquipo = new EstadoEquipo({
         nombre: req.body.nombre,
-        estado: req.body.estado,
-        fechaCreacion: Date.now(),
-        fechaActualizcion: Date.now()
+        estado: req.body.estado
     });
 
    await estadoEquipo.save( (err, estadoEquipo) => {
@@ -53,9 +51,7 @@ exports.update = (req, res) => {
     EstadoEquipo.findById(req.params.id, (err, estadoEquipo) => {
 
         estadoEquipo.nombre = req.body.nombre;
-        estadoEquipo.estado = req.body.estado;
-        estadoEquipo.fechaCreacion = req.body.fechaCreacion;
-        estadoEquipo.fechaActualizcion = req.body.fechaActualizcion;
+        estadoEquipo.estado = req.body.estado
 
         estadoEquipo.save( (err) => {
             if(err)

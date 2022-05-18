@@ -10,19 +10,12 @@ const TipoEquipoEschema = mongoose.Schema({
         type: String, 
         required: true, 
         enum: ['Activo', 'Inactivo']
-    },
-    fechaCreacion:{
-        type: Date,
-        required: true
-    },
-    fechaActualizcion:{
-        type: Date,
-        required: true
     }
-});
+},
+{
+    versionKey:false,
+    timestamps: true
+}); 
 
-const TipoEquipo = module.exports = mongoose.model('TipoEquipo', TipoEquipoEschema);
+module.exports = mongoose.model('TipoEquipo', TipoEquipoEschema);
 
-module.exports.get = (callback, limit) => {
-    TipoEquipo.find(callback).limit(limit);
-};

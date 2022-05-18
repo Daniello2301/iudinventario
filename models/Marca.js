@@ -10,19 +10,11 @@ const MarcaEschema = mongoose.Schema({
         type: String, 
         required: true, 
         enum: ['Activo', 'Inactivo']
-    },
-    fechaCreacion:{
-        type: Date,
-        required: true
-    },
-    fechaActualizcion:{
-        type: Date,
-        required: true
     }
+},
+{
+    versionKey:false,
+    timestamps: true
 });
 
-const Marca = module.exports = mongoose.model('Marca', MarcaEschema);
-
-module.exports.get = (callback, limit) => {
-    Marca.find(callback).limit(limit);
-};
+module.exports = mongoose.model('Marca', MarcaEschema);

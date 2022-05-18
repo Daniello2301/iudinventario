@@ -29,9 +29,7 @@ exports.create = async (req, res) => {
 
     const marca = new Marca({
         nombre: req.body.nombre,
-        estado: req.body.estado,
-        fechaCreacion: Date.now(),
-        fechaActualizcion: Date.now()
+        estado: req.body.estado
     });
 
     await marca.save( (err, marca) => {
@@ -49,8 +47,6 @@ exports.update =  (req, res) => {
 
         marca.nombre = req.body.nombre;
         marca.estado = req.body.estado;
-        marca.fechaCreacion = req.body.fechaCreacion;
-        marca.fechaActualizcion = req.body.fechaActualizcion;
 
         marca.save( (err) => {
             if(err) return res.status(500).send(err.message);

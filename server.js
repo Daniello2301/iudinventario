@@ -39,7 +39,7 @@ const tiposRouter = require('./routes/tipo-equipo-router');
 const estadosRouter = require('./routes/estado-equipo-router');
 const marcaRouter = require('./routes/marca-router');
 const usuariosRouter = require('./routes/usuarios-router');
-
+const inventarioRouter = require('./routes/inventarios-router');
 
 //Middleware
 app.use(express.json());
@@ -54,3 +54,6 @@ app.use('/api', marcaRouter);
 
 // Use route of Usaurios
 app.use('/api', usuariosRouter);
+
+//Use router of Inventarios
+app.use('/api', inventarioRouter);

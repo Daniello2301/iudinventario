@@ -34,9 +34,7 @@ exports.create = async(req, res) => {
 
     const tipoEquipo = new TipoEquipo({
         nombre: req.body.nombre,
-        estado: req.body.estado,
-        fechaCreacion: Date.now(),
-        fechaActualizcion: Date.now()
+        estado: req.body.estado
     });
 
    await tipoEquipo.save( (err, tipoEquipo) => {
@@ -57,8 +55,6 @@ exports.update = (req, res) => {
 
         tipoEquipo.nombre = req.body.nombre;
         tipoEquipo.estado = req.body.estado;
-        tipoEquipo.fechaCreacion = req.body.fechaCreacion;
-        tipoEquipo.fechaActualizcion = req.body.fechaActualizcion;
 
         tipoEquipo.save( (err) => {
             if(err)

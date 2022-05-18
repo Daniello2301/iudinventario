@@ -36,8 +36,6 @@ exports.create = async(req, res) => {
         email: req.body.email,
         contrasena: req.body.contrasena,
         estado: req.body.estado,
-        fechaCreacion: Date.now(),
-        fechaActualizacion: Date.now()
     });
 
     await usuario.save( (err, usuario) => {
@@ -58,8 +56,6 @@ exports.update = ( req, res ) => {
         usuario.email = req.body.email;
         usuario.contrasena = req.body.contrasena;
         usuario.estado = req.body.estado;
-        usuario.fechaCreacion = req.body.fechaCreacion;
-        usuario.fechaActualizacion = req.body.fechaActualizacion;
         
         console.log("PUT/usuarios/", req.params.id)
         usuario.save( (err) => {

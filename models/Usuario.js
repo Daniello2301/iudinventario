@@ -19,19 +19,11 @@ const UsuarioEschema = mongoose.Schema({
         type: String, 
         required: true, 
         enum: ['Activo', 'Inactivo']
-    },
-    fechaCreacion:{
-        type: Date,
-        required: true
-    },
-    fechaActualizacion:{
-        type: Date,
-        required: true
     }
+},
+{
+    versionKey:false,
+    timestamps: true
 });
 
-const Usuario = module.exports = mongoose.model('Usuario', UsuarioEschema);
-
-module.exports.get = (callback, limit) => {
-    Usuario.find(callback).limit(limit);
-};
+module.exports = mongoose.model('Usuario', UsuarioEschema);

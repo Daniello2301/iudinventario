@@ -34,40 +34,32 @@ const InventaraioEschema = mongoose.Schema({
     },
     /* usuario_id int not null, */
     usuario:{
-        type: mongoose.Schema.Types.ObjectId,
+        type:  mongoose.Schema.Types.ObjectId, 
         ref: 'Usuario',
         require: false
     },
     /* marca_id int not null, */
     marca:{
-        type:mongoose.Schema.Types.ObjectId,
+        type:  mongoose.Schema.Types.ObjectId,
         ref: 'Marca',
         require: true
     },
     /* tipo_id int not null, */
    tipo:{
-       type: mongoose.Schema.Types.ObjectId,
+       type:  mongoose.Schema.Types.ObjectId,
        ref: 'TipoEquipo',
        require: true
    },
     /*  estado_id int not null, */
-    estado:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'TipoEquipo',
+    estadoId:{
+        type:  mongoose.Schema.Types.ObjectId,
+        ref: 'EstadoEquipo',
         require: true
-    },
-    fechaCreacion:{
-        type: Date,
-        required: true
-    },
-    fechaActualizcion:{
-        type: Date,
-        required: true
     }
+},
+{
+    versionKey:false,
+    timestamps: true
 });
 
-const Inventario = module.exports =mongoose.model('Inventario', InventaraioEschema);
-
-module.exports.get = (callback, limit) => {
-    Inventario.find(callback).limit(limit);
-};
+module.exports = mongoose.model('Inventario', InventaraioEschema);
