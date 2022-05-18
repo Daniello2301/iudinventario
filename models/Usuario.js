@@ -24,7 +24,7 @@ const UsuarioEschema = mongoose.Schema({
         type: Date,
         required: true
     },
-    fechaActualizcion:{
+    fechaActualizacion:{
         type: Date,
         required: true
     }

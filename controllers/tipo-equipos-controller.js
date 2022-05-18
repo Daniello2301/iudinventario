@@ -4,12 +4,12 @@ const TipoEquipo = require('../models/TipoEquipo')
 // Get all tipos
 exports.findAll = (req, res) =>{
 
-    TipoEquipo.find( (err, tipoEquipo) => {
+    TipoEquipo.find( (err, tiposEquipo) => {
         if (err){
             return res.send(500, err.message);
         }        
         console.log("GET /tiposEquipo");
-        res.status(200).jsonp(tipoEquipo);
+        res.status(200).jsonp(tiposEquipo);
       });
 };
 
@@ -53,6 +53,8 @@ exports.update = (req, res) => {
 
     TipoEquipo.findById(req.params.id, (err, tipoEquipo) => {
 
+        if(err) return res.status(404).send(err.message);
+
         tipoEquipo.nombre = req.body.nombre;
         tipoEquipo.estado = req.body.estado;
         tipoEquipo.fechaCreacion = req.body.fechaCreacion;
@@ -63,7 +65,6 @@ exports.update = (req, res) => {
                 return res.status(500).send(err.message);
             
         res.status(200).json(tipoEquipo);
-    //console.log(stringFy.json(tipoEquipo))
         });
     });
 };

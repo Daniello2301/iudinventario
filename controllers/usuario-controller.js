@@ -41,7 +41,7 @@ exports.create = async(req, res) => {
     });
 
     await usuario.save( (err, usuario) => {
-        if(err) res.status(500).sen(err.message);
+        if(err) res.status(500).send(err.message);
 
         res.status(200).jsonp(usuario);
     });
@@ -51,7 +51,7 @@ exports.create = async(req, res) => {
 
 exports.update = ( req, res ) => {
 
-    Marca.findById(req.params.id, (err, usuario) => {
+    Usuario.findById(req.params.id, (err, usuario) => {
         if(err) res.status(404).send(err.message);
 
         usuario.nombre = req.body.nombre;
@@ -60,23 +60,26 @@ exports.update = ( req, res ) => {
         usuario.estado = req.body.estado;
         usuario.fechaCreacion = req.body.fechaCreacion;
         usuario.fechaActualizacion = req.body.fechaActualizacion;
-
+        
+        console.log("PUT/usuarios/", req.params.id)
         usuario.save( (err) => {
             if(err) return  res.send(500, err.message);
 
             res.status(201).jsonp(usuario);
         });
+        console.log(usuario)
     });
 };
 
 
 exports.deleteById = ( req, res ) => {
-    Marca.findById(req.params.id, (err, usuario) => {
+    Usuario.findById(req.params.id, (err, usuario) => {
         if(err) return res.status(404).send(err.message);
 
         usuario.remove( (err) => {
             if(err) return res.status(500).send(err.message);
 
+            console.log("DELETE/usuarios/", req.params.id);
             res.status(202).send();
         });
     });
